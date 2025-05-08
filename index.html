@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>N-Queens Challenge</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+</head>
+<body>
+  <div class="level-selector" id="levelSelector">
+    <h3>Level Progress</h3>
+    <div id="levelList"></div>
+  </div>
+
+  <div class="game-container">
+    <div class="header">
+      <h1>N-Queens Challenge</h1>
+      <div id="level">Level 1</div>
+      <div class="btn-group">
+        <button onclick="undoMove()"><i class="fas fa-undo"></i>Undo</button>
+        <button onclick="initializeGame()"><i class="fas fa-redo"></i>Restart</button>
+      </div>
+    </div>
+    <div id="board"></div>
+    <div id="message"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
