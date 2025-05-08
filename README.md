@@ -42,6 +42,6 @@ To reset your progress and start from level 1, click the "Reset All Levels" butt
 
 ## Help & Support
 
-If you need help or have any questions, you can visit the [help page](help.html).
+If you need help or have any questions, you can visit the [help page](https://mrtuzzo.github.io/N-Queen_Game/help.html).
 
 Happy playing! 🎉
