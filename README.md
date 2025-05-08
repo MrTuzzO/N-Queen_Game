@@ -1,6 +1,6 @@
-# N-Queens Puzzle Learning Game
+# N-Queen Puzzle Learning Game
 
-The N-Queens Puzzle Learning Game is an interactive puzzle game where you place queens on a chessboard while ensuring they don't threaten each other. The game progresses through multiple levels, and the goal is to place the queens correctly for each level size.
+The N-Queen Puzzle Learning Game is an interactive puzzle game where you place queens on a chessboard while ensuring they don't threaten each other. The game progresses through multiple levels, and the goal is to place the queens correctly for each level size.
 
 ## Features
 - **Boards from 4x4 to 8x8:** The game starts with a 4x4 board and increases in size with each level.
@@ -17,7 +17,7 @@ The N-Queens Puzzle Learning Game is an interactive puzzle game where you place 
 - **JavaScript**
 
 ## Live Demo
-You can play the game live here: [Live Demo](https://maruf-pfc.github.io/n-queens_game)
+You can play the game live here: [Live Demo](https://maruf-pfc.github.io/n-queen_game)
 
 ## Installation
 
@@ -25,7 +25,7 @@ To run this project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/maruf-pfc/n-queens_game.git
+   git clone https://github.com/maruf-pfc/n-queen_game.git
    ```
 
 2. Open `index.html` in your browser to start the game.
