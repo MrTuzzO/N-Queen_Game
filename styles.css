@@ -81,7 +81,12 @@ body {
     /* pointer-events: none; */
     cursor: not-allowed;
 }
-
+#queenCounter {
+    font-size: 18px;
+    margin-top: 10px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+}
 .blocked:hover {
     background-color: rgba(120, 120, 120, 0.6);
     transform: none;
@@ -96,6 +101,13 @@ body {
     margin: 20px;
     text-align: center;
     min-height: 40px;
+}
+
+#queenCounter {
+    font-size: 18px;
+    margin-top: 10px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
 }
 
 .game-over {

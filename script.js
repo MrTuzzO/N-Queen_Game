@@ -9,6 +9,7 @@ function initializeGame() {
     document.getElementById('level').textContent = `Level ${currentLevel}`;
     createBoard(getNForLevel(currentLevel));
     queens = [];
+    updateQueenCounter(); // Update counter on game initialization
 }
 
 function getNForLevel(level) {
@@ -42,6 +43,8 @@ function placeQueen(row, col, cell) {
     queens.push({ row, col });
 
     blockUnsafeCells();
+    updateQueenCounter(); // Update counter after placing a queen
+
     if (queens.length === getNForLevel(currentLevel)) {
         levelPassed();
     } else if (!hasValidMoves()) {
@@ -103,6 +106,7 @@ function undoMove() {
         const c = document.querySelector(`.cell[data-row="${q.row}"][data-col="${q.col}"]`);
         placeQueen(q.row, q.col, c);
     });
+    updateQueenCounter(); // Update counter after undoing a move
 }
 
 function levelPassed() {
@@ -132,6 +136,19 @@ function showMessage(text, className) {
     const messageEl = document.getElementById('message');
     messageEl.textContent = text;
     messageEl.className = className || '';
+}
+
+function updateQueenCounter() {
+    const totalQueens = getNForLevel(currentLevel);
+    const placedQueens = queens.length;
+    document.getElementById('queenCounter').textContent = `Queens Placed: ${placedQueens} / ${totalQueens}`;
+}
+
+function confirmRestart() {
+    const userConfirmed = confirm('Are you sure you want to restart the game?');
+    if (userConfirmed) {
+        initializeGame();
+    }
 }
 
 initializeGame();
