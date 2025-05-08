@@ -151,4 +151,19 @@ function confirmRestart() {
     }
 }
 
+function confirmResetLevels() {
+    const userConfirmed = confirm('Are you sure you want to reset all levels? This will clear your progress.');
+    if (userConfirmed) {
+        resetAllLevels();
+    }
+}
+
+function resetAllLevels() {
+    currentLevel = 1;
+    localStorage.removeItem('nQueensLevel'); // Clear level tracking from localStorage
+    updateLevelSelector(); // Update the level selector UI
+    initializeGame(); // Restart the game at level 1
+    showMessage('All levels have been reset!', 'success');
+}
+
 initializeGame();

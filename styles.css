@@ -115,6 +115,24 @@ body {
     animation: shake 0.5s;
 }
 
+#resetLevelsBtn {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    margin-left: 0PX;
+}
+
+#resetLevelsBtn:hover {
+    background-color: #c0392b;
+}
+
 @keyframes shake {
     0% {
         transform: translateX(0);
