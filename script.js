@@ -1,7 +1,7 @@
 // N-Queens Game JavaScript
 let currentLevel = parseInt(localStorage.getItem('nQueensLevel')) || 1;
 let queens = [];
-const MAX_LEVEL = 5;
+const MAX_LEVEL = 7;
 
 function initializeGame() {
     showMessage('');
@@ -128,6 +128,7 @@ function updateLevelSelector() {
         const levelItem = document.createElement('div');
         levelItem.className = `level-item ${i < currentLevel ? 'completed' : ''} ${i === currentLevel ? 'current' : ''}`;
         levelItem.textContent = `Level ${i}`;
+        levelItem.style.textAlign = 'center';
         levelList.appendChild(levelItem);
     }
 }
