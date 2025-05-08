@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>N-Queens Challenge</title>
+  <title>N-Queen Challenge</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -12,10 +12,18 @@
 
 <body>
   <div class="level-selector" id="levelSelector">
-    <h3>Level Progress</h3>
-    <div id="levelList"></div>
-    <button id="resetLevelsBtn" onclick="confirmResetLevels()">Reset All Levels</button>
+    <div>
+      <h3>Level Progress</h3>
+      <div id="levelList"></div>
+      <button id="resetLevelsBtn" onclick="confirmResetLevels()">Reset All Levels</button>
+    </div>
+    <div class="help">
+      <ul>
+        <li><a href="/help.html">Need Help ?</a></li>
+      </ul>
+    </div>
   </div>
+
 
   <div class="game-container">
     <div class="header">
