@@ -38,6 +38,7 @@ function placeQueen(row, col, cell) {
     cell.textContent = '♛';
     cell.classList.add('queen');
     cell.style.background = '#111';
+    cell.style.color = '#fff';
     queens.push({ row, col });
 
     blockUnsafeCells();
