@@ -34,7 +34,13 @@ function createBoard(n) {
 }
 
 function placeQueen(row, col, cell) {
-    if (cell.textContent || cell.classList.contains('blocked')) return;
+    if (cell.textContent /*|| cell.classList.contains('blocked')*/) return;
+
+    // Check if the move is safe
+    if (!isSafe(row, col)) {
+        alert('Invalid move! You cannot place a queen here.');
+        return;
+    }
 
     cell.textContent = '♛';
     cell.classList.add('queen');
@@ -42,7 +48,7 @@ function placeQueen(row, col, cell) {
     cell.style.color = '#fff';
     queens.push({ row, col });
 
-    blockUnsafeCells();
+    // blockUnsafeCells(); // Temporarily disabled
     updateQueenCounter(); // Update counter after placing a queen
 
     if (queens.length === getNForLevel(currentLevel)) {
@@ -54,24 +60,24 @@ function placeQueen(row, col, cell) {
 }
 
 function blockUnsafeCells() {
-    const n = getNForLevel(currentLevel);
-    const board = document.getElementById('board');
+    // const n = getNForLevel(currentLevel);
+    // const board = document.getElementById('board');
 
-    // Clear all previous blocks
-    document.querySelectorAll('.cell').forEach(cell => {
-        if (!cell.textContent) {
-            cell.classList.remove('blocked');
-        }
-    });
+    // // Clear all previous blocks
+    // document.querySelectorAll('.cell').forEach(cell => {
+    //     if (!cell.textContent) {
+    //         cell.classList.remove('blocked');
+    //     }
+    // });
 
-    for (let row = 0; row < n; row++) {
-        for (let col = 0; col < n; col++) {
-            const cell = board.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
-            if (cell && !cell.textContent && !isSafe(row, col)) {
-                cell.classList.add('blocked');
-            }
-        }
-    }
+    // for (let row = 0; row < n; row++) {
+    //     for (let col = 0; col < n; col++) {
+    //         const cell = board.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+    //         if (cell && !cell.textContent && !isSafe(row, col)) {
+    //             cell.classList.add('blocked');
+    //         }
+    //     }
+    // }
 }
 
 function isSafe(row, col) {
