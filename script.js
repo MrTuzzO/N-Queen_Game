@@ -2,6 +2,7 @@
 let currentLevel = parseInt(localStorage.getItem('nQueensLevel')) || 1;
 let queens = [];
 const MAX_LEVEL = 7;
+let customAlertTimer = null;
 
 function initializeGame() {
     showMessage('');
@@ -38,7 +39,7 @@ function placeQueen(row, col, cell) {
 
     // Check if the move is safe
     if (!isSafe(row, col)) {
-        alert('Invalid move! You cannot place a queen here.');
+        showCustomAlert('Invalid move! You cannot place a queen here.', 3000);
         return;
     }
 
@@ -171,6 +172,31 @@ function resetAllLevels() {
     updateLevelSelector(); // Update the level selector UI
     initializeGame(); // Restart the game at level 1
     showMessage('All levels have been reset!', 'success');
+}
+
+// Custom Alert Functions
+function showCustomAlert(message, timeout = 0) {
+    document.getElementById('customAlertMessage').textContent = message;
+    const overlay = document.getElementById('customAlert');
+    overlay.style.display = 'flex';
+
+    // Remove any previous event listener
+    overlay.onclick = function (e) {
+        // Only close if clicked outside the alert box
+        if (e.target === overlay) closeCustomAlert();
+    };
+
+    // Timer to auto-close
+    if (customAlertTimer) clearTimeout(customAlertTimer);
+    if (timeout > 0) {
+        customAlertTimer = setTimeout(closeCustomAlert, timeout);
+    }
+}
+
+function closeCustomAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+    if (customAlertTimer) clearTimeout(customAlertTimer);
+    customAlertTimer = null;
 }
 
 initializeGame();
