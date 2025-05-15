@@ -2,6 +2,7 @@
 let currentLevel = parseInt(localStorage.getItem('nQueensLevel')) || 1;
 let queens = [];
 const MAX_LEVEL = 7;
+let customAlertTimer = null;
 
 function initializeGame() {
     showMessage('');
@@ -34,7 +35,13 @@ function createBoard(n) {
 }
 
 function placeQueen(row, col, cell) {
-    if (cell.textContent || cell.classList.contains('blocked')) return;
+    if (cell.textContent /*|| cell.classList.contains('blocked')*/) return;
+
+    // Check if the move is safe
+    if (!isSafe(row, col)) {
+        showCustomAlert('Invalid move! You cannot place a queen here.', 3000);
+        return;
+    }
 
     cell.textContent = '♛';
     cell.classList.add('queen');
@@ -42,7 +49,7 @@ function placeQueen(row, col, cell) {
     cell.style.color = '#fff';
     queens.push({ row, col });
 
-    blockUnsafeCells();
+    // blockUnsafeCells(); // Temporarily disabled
     updateQueenCounter(); // Update counter after placing a queen
 
     if (queens.length === getNForLevel(currentLevel)) {
@@ -54,24 +61,24 @@ function placeQueen(row, col, cell) {
 }
 
 function blockUnsafeCells() {
-    const n = getNForLevel(currentLevel);
-    const board = document.getElementById('board');
+    // const n = getNForLevel(currentLevel);
+    // const board = document.getElementById('board');
 
-    // Clear all previous blocks
-    document.querySelectorAll('.cell').forEach(cell => {
-        if (!cell.textContent) {
-            cell.classList.remove('blocked');
-        }
-    });
+    // // Clear all previous blocks
+    // document.querySelectorAll('.cell').forEach(cell => {
+    //     if (!cell.textContent) {
+    //         cell.classList.remove('blocked');
+    //     }
+    // });
 
-    for (let row = 0; row < n; row++) {
-        for (let col = 0; col < n; col++) {
-            const cell = board.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
-            if (cell && !cell.textContent && !isSafe(row, col)) {
-                cell.classList.add('blocked');
-            }
-        }
-    }
+    // for (let row = 0; row < n; row++) {
+    //     for (let col = 0; col < n; col++) {
+    //         const cell = board.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+    //         if (cell && !cell.textContent && !isSafe(row, col)) {
+    //             cell.classList.add('blocked');
+    //         }
+    //     }
+    // }
 }
 
 function isSafe(row, col) {
@@ -165,6 +172,31 @@ function resetAllLevels() {
     updateLevelSelector(); // Update the level selector UI
     initializeGame(); // Restart the game at level 1
     showMessage('All levels have been reset!', 'success');
+}
+
+// Custom Alert Functions
+function showCustomAlert(message, timeout = 0) {
+    document.getElementById('customAlertMessage').textContent = message;
+    const overlay = document.getElementById('customAlert');
+    overlay.style.display = 'flex';
+
+    // Remove any previous event listener
+    overlay.onclick = function (e) {
+        // Only close if clicked outside the alert box
+        if (e.target === overlay) closeCustomAlert();
+    };
+
+    // Timer to auto-close
+    if (customAlertTimer) clearTimeout(customAlertTimer);
+    if (timeout > 0) {
+        customAlertTimer = setTimeout(closeCustomAlert, timeout);
+    }
+}
+
+function closeCustomAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+    if (customAlertTimer) clearTimeout(customAlertTimer);
+    customAlertTimer = null;
 }
 
 initializeGame();
